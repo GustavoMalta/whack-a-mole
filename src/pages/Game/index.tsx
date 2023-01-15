@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 
 import { Moles } from '../../components';
 import scenarium from '../../assets/WAM_bg.jpg';
-import { Div, Map, ScoreLabel, ScoreStatus } from './styles';
+import { Div, DivScore, Map, ScoreLabel, ScoreStatus } from './styles';
 // import { Axios } from '../../api/axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -54,18 +54,18 @@ export const Game = () => {
   }
   return (
     <Div>
-      <Moles>
-        <ScoreStatus>
-          <div style={{ width: '33.33%' }}></div>
-          <div style={{ display: 'flex', width: '33.33%', justifyContent: 'center' }}>
-            <ScoreLabel>{score}</ScoreLabel>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'end', width: '33.33%' }}>
-            <ScoreLabel>{player.name}</ScoreLabel>
-          </div>
-        </ScoreStatus>
-      </Moles>
-      <Map src={scenarium} />
+      <ScoreStatus>
+        <DivScore style={{ justifyContent: 'center' }}>
+          <ScoreLabel min={true}>SCORE:</ScoreLabel>
+          <ScoreLabel>{score}</ScoreLabel>
+        </DivScore>
+        <DivScore style={{ justifyContent: 'end' }}>
+          <ScoreLabel min={true}>PLAYER:</ScoreLabel>
+          <ScoreLabel>{player.name}</ScoreLabel>
+        </DivScore>
+      </ScoreStatus>
+      <Moles />
+      {/* <Map src={scenarium} /> */}
     </Div>
   );
 };

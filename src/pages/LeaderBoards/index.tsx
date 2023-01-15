@@ -26,15 +26,15 @@ export const Leaderboards = () => {
       {/* <Moles> */}
       <ScoreStatus>
         <DivRank>
-          <span>{rank >= 0 ? 'Rank:' : ''}</span>
+          <span>{rank >= 0 ? 'RANK' : ''}</span>
           <ScoreLabel>{rank}</ScoreLabel>
         </DivRank>
         <DivScore>
-          <span>{score >= 0 ? 'Score:' : ''}</span>
+          <span>{score >= 0 ? 'SCORE' : ''}</span>
           <ScoreLabel>{score}</ScoreLabel>
         </DivScore>
         <DivName>
-          <span>{name ? 'Player:' : ''}</span>
+          <span>{name ? 'PLAYER' : ''}</span>
           <ScoreLabel>{name}</ScoreLabel>
         </DivName>
       </ScoreStatus>

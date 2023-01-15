@@ -79,7 +79,7 @@ export const startGameAsync =
     setTimeout(() => {
       clearInterval(intervalId);
       dispatch(stop());
-    }, 120000); // 120000 toe minutes
+    }, 120000); // 120000 two minutes
   };
 
 export const setNewPlayer = (player: Player) => async () => {
