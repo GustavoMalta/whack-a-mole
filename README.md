@@ -8,7 +8,7 @@ You will need:
 - [yarn](https://yarnpkg.com)
 
 You can change the server host by changhing the .env file, like demonstrated in .env.example. \
-The default url to Backend is 'http://localhost:3001'\
+The default url to Backend is 'http://localhost:3001' \
 The default url to Frontend is 'http://localhost:3333'
 
 I left in the package.json a script to Start all the project more easly. After the Download the project, run one of this commands to download the peckages. This will downlaod the packages of the Front and Backend together:
