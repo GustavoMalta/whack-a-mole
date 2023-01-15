@@ -1,41 +1,53 @@
 import { useEffect } from 'react';
-import { getScore, startGameAsync } from './redux';
+import { getLeaderBoard, getLeaderBoards } from './redux';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { selectPlayerName } from '../Home/redux';
 
-import { Moles } from '../../components';
-import scenarium from '../../assets/WAM_bg.jpg';
-import { Div, Map, ScoreLabel, ScoreStatus } from './styles';
+import { TableScore } from '../../components';
+import { Div, DivName, DivRank, DivScore, LeaderBorad, ScoreLabel, ScoreStatus } from './styles';
+import { getPlayer, getScore, unAthorize } from '../Game/redux';
 
 export const Leaderboards = () => {
   const dispatch = useAppDispatch();
-  const name = useAppSelector(selectPlayerName);
+  const { id, name, rank, score } = useAppSelector(getPlayer);
 
-  const onLoad = () => {
-    console.log(name);
-    // dispatch(startGameAsync());
-  };
+  const leaderBoards = useAppSelector(getLeaderBoards);
 
-  const score = useAppSelector(getScore);
-
-  useEffect(() => {
-    // onLoad();
+  useEffect(function () {
+    fillLeaderBoard();
+    dispatch(unAthorize());
   }, []);
+
+  // useEffect(
+  //   function () {
+  //     bodyTable();
+  //   },
+  //   [leaderBoards],
+  // );
+
+  async function fillLeaderBoard() {
+    dispatch(getLeaderBoard());
+  }
 
   return (
     <Div>
-      <Moles>
-        <ScoreStatus>
-          <div style={{ width: '33.33%' }}></div>
-          <div style={{ display: 'flex', width: '33.33%', justifyContent: 'center' }}>
-            <ScoreLabel>{score}</ScoreLabel>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'end', width: '33.33%' }}>
-            <ScoreLabel>{name}</ScoreLabel>
-          </div>
-        </ScoreStatus>
-      </Moles>
-      <Map src={scenarium} />
+      {/* <Moles> */}
+      <ScoreStatus>
+        <DivRank>
+          <span>{rank >= 0 ? 'Rank:' : ''}</span>
+          <ScoreLabel>{rank}</ScoreLabel>
+        </DivRank>
+        <DivScore>
+          <span>{score >= 0 ? 'Score:' : ''}</span>
+          <ScoreLabel>{score}</ScoreLabel>
+        </DivScore>
+        <DivName>
+          <span>{name ? 'Player:' : ''}</span>
+          <ScoreLabel>{name}</ScoreLabel>
+        </DivName>
+      </ScoreStatus>
+      <LeaderBorad>
+        <TableScore players={leaderBoards} playerId={id} />
+      </LeaderBorad>
     </Div>
   );
 };

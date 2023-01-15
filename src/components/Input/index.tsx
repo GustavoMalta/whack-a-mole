@@ -36,6 +36,7 @@ export const Input = (props: tipo) => {
         placeholder={placeHolder}
         onKeyDown={(e) => handleSubmit(e)}
         value={value}
+        maxLength={18}
       />
     </div>
   );

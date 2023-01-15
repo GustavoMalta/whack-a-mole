@@ -1,68 +1,41 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getLeaderBoardList } from '../../api';
+import { Player } from '../Game/redux';
 
-export interface GameSliceState {
+export interface LeaderboardSliceState {
   name: string;
-  moleUp: number;
+  leaderBoards: Player[];
   starded: boolean;
   gridData: number;
   score: number;
 }
 
-const initialState = { name: '', moleUp: -1, starded: false } as GameSliceState;
+const initialState = { name: '' } as LeaderboardSliceState;
 
 export const gameSlice = createSlice({
-  name: 'game',
+  name: 'leaderBoards',
   initialState: initialState,
   reducers: {
-    savePlayerName: (state, action) => {
-      state.name = action.payload;
-    },
-    setMoleUp: (state, action) => {
-      state.moleUp = action.payload;
-    },
-    setMoleHit: (state, action) => {
-      state.moleUp = -1;
-      state.score = state.score + 1;
-    },
-    start: (state) => {
-      state.starded = true;
-    },
-    stop: (state) => {
-      state.moleUp = -1;
-      state.starded = false;
-    },
-    restart: (state) => {
-      state.starded = false;
-      state.moleUp = -1;
-      state.score = 0;
+    setLeaderBoards: (state, action) => {
+      state.leaderBoards = action.payload;
     },
   },
 });
 
-export const { savePlayerName } = gameSlice.actions;
+export const getLeaderBoard =
+  () => async (dispatch: (arg0: { payload: undefined; type: string }) => void) => {
+    try {
+      const leaderboard = await getLeaderBoardList();
+      dispatch(setLeaderBoards(leaderboard));
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 export default gameSlice.reducer;
 
-//async function (thunk)
-export const startGameAsync =
-  (totalMoles = 9) =>
-  (dispatch: (arg0: { payload: undefined; type: string }) => void) => {
-    dispatch(restart());
-    dispatch(start());
-    const intervalId = setInterval(() => {
-      const up = Math.floor(Math.random() * totalMoles);
-      dispatch(setMoleUp(up));
-      console.log(up);
-    }, 2000);
-    setTimeout(() => {
-      console.log('finish');
-      clearInterval(intervalId);
-      dispatch(stop());
-    }, 10000); // 120000 toe minutes
-  };
-export const { start, stop, setMoleUp, setMoleHit, restart } = gameSlice.actions;
+export const { setLeaderBoards } = gameSlice.actions;
 
 //selectors
-export const getMoleUp = (state: { game: GameSliceState }) => state.game.moleUp;
-export const getScore = (state: { game: GameSliceState }) => state.game.score;
-export const getStarted = (state: { game: GameSliceState }) => state.game.starded;
+export const getLeaderBoards = (state: { leaderBoards: LeaderboardSliceState }) =>
+  state.leaderBoards.leaderBoards;

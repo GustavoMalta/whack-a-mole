@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Div = styled.div`
   position: absolute;
   width: inherit;
+  cursor: none;
 `;
 
 export const MolesGrid = styled.div`

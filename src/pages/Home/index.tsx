@@ -1,20 +1,30 @@
 import { Div } from './styles';
-import { savePlayerName, selectPlayerName } from './redux';
+import { selectPlayerName, setPlayerName } from './redux';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { Button, Input, Hammer } from '../../components';
+import { Button, Input } from '../../components';
 import { useNavigate } from 'react-router-dom';
+import { authorize, restart } from '../Game/redux';
+import { useEffect } from 'react';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
   const playerName = useAppSelector(selectPlayerName);
   let navigate = useNavigate();
 
+  useEffect(function () {
+    dispatch(setPlayerName(''));
+    dispatch(restart());
+  }, []);
+
   function handleSubmit() {
-    if (playerName) navigate('/game');
+    if (playerName) {
+      dispatch(authorize());
+      navigate('/game');
+    }
   }
 
   const handleInput = (e: string) => {
-    dispatch(savePlayerName(e));
+    dispatch(setPlayerName(e));
   };
 
   return (

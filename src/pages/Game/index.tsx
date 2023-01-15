@@ -1,20 +1,28 @@
 import { useEffect } from 'react';
-import { getScore, startGameAsync, getStatus, GameStatesEnum } from './redux';
+import {
+  getScore,
+  startGameAsync,
+  getStatus,
+  GameStatesEnum,
+  getPlayer,
+  setNewPlayer,
+  getAuthorized,
+  savePlayer,
+} from './redux';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { selectPlayerName } from '../Home/redux';
 
 import { Button, Hammer, Moles } from '../../components';
 import scenarium from '../../assets/WAM_bg.jpg';
 import { Div, Map, ScoreLabel, ScoreStatus } from './styles';
-import { Axios } from '../../api/axios';
+// import { Axios } from '../../api/axios';
 import { useNavigate } from 'react-router-dom';
 
 export const Game = () => {
   const dispatch = useAppDispatch();
-  const name = useAppSelector(selectPlayerName);
+
+  const player = useAppSelector(getPlayer);
   const status = useAppSelector(getStatus);
   // console.log(dispatch)
-  // const name = useAppSelector(selectPlayerName);
   let navigate = useNavigate();
 
   const onLoad = () => {
@@ -32,24 +40,17 @@ export const Game = () => {
     function () {
       if (status == GameStatesEnum.FINISHED) {
         console.log('axios');
-
-        grava();
+        submitScore();
       }
     },
     [status],
   );
 
-  async function grava() {
+  async function submitScore() {
     try {
-      const axios = Axios();
-
-      const { data } = await axios.post(`/api/v1/players`, { name, score });
-      console.log(data);
-
-      if (data.success) {
-        console.log('success');
-        navigate('/leaderboards');
-      }
+      const playerSaved = await dispatch(setNewPlayer({ ...player, score }));
+      dispatch(savePlayer(playerSaved));
+      navigate('/leaderboards');
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +64,7 @@ export const Game = () => {
             <ScoreLabel>{score}</ScoreLabel>
           </div>
           <div style={{ display: 'flex', justifyContent: 'end', width: '33.33%' }}>
-            <ScoreLabel>{name}</ScoreLabel>
+            <ScoreLabel>{player.name}</ScoreLabel>
           </div>
         </ScoreStatus>
       </Moles>

@@ -1,13 +1,18 @@
-import { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import hole from '../../assets/WAM_Hole.png';
 import mole from '../../assets/WAM_Mole.png';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { getMoleUp, getStarted, setMoleHit } from '../../pages/Game/redux';
+import { getMoleUp, getAuthorized, setMoleHit } from '../../pages/Game/redux';
+import Hammer from '../Hammer';
 import { Div, MoleGrid, MolesGrid } from './styles';
 // import './styles.css'
 
 interface Props {
   children: ReactElement;
+}
+interface Position {
+  x: number;
+  y: number;
 }
 
 function Moles(props: Props) {
@@ -17,17 +22,37 @@ function Moles(props: Props) {
   // const [stopMoles, setStopMoles] = useState(false);
 
   const moleUp = useAppSelector(getMoleUp);
-  const started = useAppSelector(getStarted);
+  const isAuthorized = useAppSelector(getAuthorized);
+  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
+  const [smash, setSmash] = useState(false);
+
   // const score = useAppSelector(sdsdsdsdsds);
   const dispatch = useAppDispatch();
 
   const handleSmash = (e: any) => {
-    if (started && e.target.id == moleUp) {
-      // e.target.src = hole;
+    if (isAuthorized && e.target.id == moleUp) {
       dispatch(setMoleHit(e.target.id));
-      console.log(moleUp);
     }
   };
+
+  const handleHammer = (event: { clientX: number; clientY: number }) => {
+    setPosition({
+      x: event.clientX - 250,
+      y: event.clientY - 370,
+    });
+  };
+
+  useEffect(
+    function () {
+      const interval = setInterval(() => {
+        if (smash) {
+          setSmash(false);
+        }
+      }, 100);
+      return () => clearInterval(interval);
+    },
+    [smash],
+  );
 
   const Mole = (total: number) => {
     const asd = [];
@@ -39,7 +64,6 @@ function Moles(props: Props) {
             id={id.toString()}
             src={moleUp == id ? mole : hole}
             alt="mole"
-            className="moleImg"
             onClick={handleSmash}
             draggable={false}
           />
@@ -50,9 +74,12 @@ function Moles(props: Props) {
     return asd;
   };
   return (
-    <Div className="moles" style={{ position: 'absolute', width: 'inherit' }}>
+    <Div className="moles" onMouseMoveCapture={handleHammer}>
       {children}
-      <MolesGrid>{Mole(9)}</MolesGrid>
+      <MolesGrid onClick={() => setSmash(true)}>
+        <Hammer posX={position.x} posY={position.y} smash={smash} />
+        {Mole(9)}
+      </MolesGrid>
     </Div>
   );
 }

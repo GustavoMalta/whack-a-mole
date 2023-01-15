@@ -1,8 +1,12 @@
 [
-  { "id": 1, "name": "Player A", "score": 2 },
-  { "id": 2, "name": "Player B", "score": 1 },
-  { "id": 3, "name": "Player C", "score": 2 },
-  { "id": 4, "name": "Player D", "score": 0 },
-  { "id": 5, "name": "Player E", "score": 3 },
-  { "id": 6, "name": "Player F", "score": 6 }
+  { "id": "0f9bc8af-ebc8-4cb4-afff-8edbb3ff9d3e", "name": "Mathilde", "score": 2 },
+  { "id": "141e6c3c-d4eb-4a07-abe4-24338a38a316", "name": "Lewis", "score": 1 },
+  { "id": "e30b50c9-f44f-4fdf-a396-907869881d18", "name": "Nicoletta", "score": 2 },
+  { "id": "ef49d1fe-7bb7-4571-b298-f12a53bc254c", "name": "Christophe", "score": 0 },
+  { "id": "54087ca4-6080-43d1-acd4-bf2f9484cb53", "name": "Bryan", "score": 3 },
+  { "id": "eb8cfcda-dee7-40d7-95c3-98646cb749b3", "name": "Damian", "score": 6 },
+  { "id": "2ab455d2-5115-4719-bc2c-d29d7a58d9d5", "name": "Josephine", "score": 5 },
+  { "id": "4358bc33-cd16-4bc9-9385-15ab25885669", "name": "Nigel", "score": 2 },
+  { "id": "0831d760-5f4c-4bbd-9e92-d98ae9404d88", "name": "Kristy", "score": 2 },
+  { "id": "a9402a2f-92e9-484e-9985-f5a489c6bebb", "name": "Bryna", "score": 2 }
 ]

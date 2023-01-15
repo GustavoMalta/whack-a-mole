@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { setPlayerScore } from '../../api';
+import { useAppSelector } from '../../hooks';
 
 export interface GameSliceState {
-  name: string;
+  player: Player;
   moleUp: number;
-  starded: boolean;
+  authorized: boolean;
   gridData: number;
   score: number;
   status: GameStatesEnum;
@@ -13,11 +15,17 @@ export enum GameStatesEnum {
   STARTED = 'STARTED',
   FINISHED = 'FINISHED',
 }
+export interface Player {
+  id?: string;
+  name: string;
+  rank: number;
+  score: number;
+}
 
 const initialState = {
-  name: '',
+  player: {},
   moleUp: -1,
-  starded: false,
+  authorized: false,
   status: GameStatesEnum.NOT_STARTED,
 } as GameSliceState;
 
@@ -25,35 +33,36 @@ export const gameSlice = createSlice({
   name: 'game',
   initialState: initialState,
   reducers: {
-    savePlayerName: (state, action) => {
-      state.name = action.payload;
+    savePlayer: (state, action) => {
+      state.player = action.payload;
     },
     setMoleUp: (state, action) => {
       state.moleUp = action.payload;
     },
-    setMoleHit: (state, action) => {
+    setMoleHit: (state) => {
       state.moleUp = -1;
       state.score = state.score + 1;
     },
+    authorize: (state) => {
+      state.authorized = true;
+    },
+    unAthorize: (state) => {
+      state.authorized = false;
+    },
     start: (state) => {
-      state.starded = true;
       state.status = GameStatesEnum.STARTED;
     },
     stop: (state) => {
       state.moleUp = -1;
-      state.starded = false;
       state.status = GameStatesEnum.FINISHED;
     },
     restart: (state) => {
-      state.starded = false;
       state.moleUp = -1;
       state.score = 0;
       state.status = GameStatesEnum.NOT_STARTED;
     },
   },
 });
-
-export const { savePlayerName } = gameSlice.actions;
 
 export default gameSlice.reducer;
 
@@ -67,17 +76,30 @@ export const startGameAsync =
       const up = Math.floor(Math.random() * totalMoles);
       dispatch(setMoleUp(up));
       console.log(up);
-    }, 2000);
+    }, 800);
     setTimeout(() => {
       console.log('finish');
       clearInterval(intervalId);
       dispatch(stop());
     }, 10000); // 120000 toe minutes
   };
-export const { start, stop, setMoleUp, setMoleHit, restart } = gameSlice.actions;
+
+export const setNewPlayer = (player: Player) => async () => {
+  try {
+    savePlayer(player);
+    const playerSaved = await setPlayerScore(player);
+    return playerSaved;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const { savePlayer, start, stop, setMoleUp, setMoleHit, restart, authorize, unAthorize } =
+  gameSlice.actions;
 
 //selectors
 export const getMoleUp = (state: { game: GameSliceState }) => state.game.moleUp;
 export const getScore = (state: { game: GameSliceState }) => state.game.score;
-export const getStarted = (state: { game: GameSliceState }) => state.game.starded;
 export const getStatus = (state: { game: GameSliceState }) => state.game.status;
+export const getPlayer = (state: { game: GameSliceState }) => state.game.player;
+export const getAuthorized = (state: { game: GameSliceState }) => state.game.authorized;

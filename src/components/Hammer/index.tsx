@@ -1,35 +1,34 @@
-import { useState } from 'react';
-import reactLogo from '../../assets/vite.svg';
+import wamHammer from '../../assets/WAM_Hammer.png';
+import { HammerImg } from './styles';
 // import './styles.css'
 
-function Button() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div className="Home">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img
-            src="
-          /vite.svg"
-            className="logo"
-            alt="Vite logo"
-          />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/Home.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </div>
-  );
+export interface HammerProps {
+  posX: number;
+  posY: number;
+  smash: boolean;
 }
 
-export default Button;
+export const Hammer = (props: HammerProps) => {
+  const { posX, posY, smash } = props;
+
+  return (
+    <div className="wam-hammer-container" key="wam-hammer">
+      <HammerImg
+        src={wamHammer}
+        aria-label={'wam-hammer'}
+        draggable={false}
+        style={{
+          top: posY,
+          left: posX,
+          position: 'absolute',
+          zIndex: 50,
+          pointerEvents: 'none',
+          transformOrigin: 'bottom right',
+        }}
+        smash={smash}
+      />
+    </div>
+  );
+};
+
+export default Hammer;

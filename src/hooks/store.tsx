@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import gameReducer from '../pages/Game/redux';
 import playerReducer from '../pages/Home/redux';
+import leaderBoards from '../pages/LeaderBoards/redux';
 
 export const store = configureStore({
   reducer: {
     player: playerReducer,
     game: gameReducer,
+    leaderBoards: leaderBoards,
   },
 });
 

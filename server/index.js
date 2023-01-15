@@ -51,8 +51,10 @@ app.post('/api/v1/players', function (req, res) {
   };
   players.push(currentPlayer);
   players.sort(sortPlayer);
+  const rank = players.findIndex((p) => p.id == currentPlayer.id);
+  currentPlayer.rank = rank + 1;
   const responseData = {
-    records: players.slice(0, 10),
+    player: currentPlayer,
     success: true,
   };
   return res.status(201).json(responseData);
@@ -62,6 +64,7 @@ app.get('/api/v1/leaderboard', (req, res) => {
   players.sort(sortPlayer);
   const responseData = {
     records: players.slice(0, 10),
+    success: true,
   };
   res.status(200).json(responseData);
 });

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { savePlayer } from '../Game/redux';
 
 export interface PlayerSliceState {
   name: string;
@@ -15,6 +16,17 @@ export const playerSlice = createSlice({
     },
   },
 });
+
+export const setPlayerName =
+  (name: string) => async (dispatch: (arg0: { payload: undefined; type: string }) => void) => {
+    try {
+      console.log(name);
+      dispatch(savePlayer({ name, score: 0 }));
+      dispatch(savePlayerName(name));
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 export const { savePlayerName } = playerSlice.actions;
 
