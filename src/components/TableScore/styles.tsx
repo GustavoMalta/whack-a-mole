@@ -14,7 +14,6 @@ export const Table = styled.table`
 
   & thead {
     font-family: @main-bold-font;
-    color: @color-blue-10;
     text-align: left;
 
     & tr {

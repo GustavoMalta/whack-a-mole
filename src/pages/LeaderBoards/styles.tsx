@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../../utils/colors';
 
 export const Div = styled.div`
   width: 1500px;
@@ -28,7 +29,7 @@ export const ScoreStatus = styled.div`
 
 export const ScoreLabel = styled.label`
   font-weight: 900;
-  color: darkgreen;
+  color: ${colors.primary};
 `;
 
 export const LeaderBorad = styled.div`
