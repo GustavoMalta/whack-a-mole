@@ -43,4 +43,5 @@ export const DivScore = styled.div`
   display: flex;
   width: 50%;
   padding: 5px 40px;
+  justify-content: center;
 `;

@@ -9,6 +9,7 @@
     "dev": "vite",
     "project": "yarn server | yarn dev",
     "server": "cd server && npm run start ",
+    "intallPackages": "yarn && cd server && yarn",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

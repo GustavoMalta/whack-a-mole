@@ -65,13 +65,6 @@ export const DivScore = styled(headerDiv)`
 `;
 
 export const DivName = styled(headerDiv)`
-  justify-content: end;
+  justify-content: center;
   width: 40%;
 `;
-
-// padding: 0px 30px 40px;
-// background-color: @white;
-// padding: 8px;
-// border-radius: 4px;
-// font-size: 35px;
-// line-height: 16px;

@@ -55,11 +55,11 @@ export const Game = () => {
   return (
     <Div>
       <ScoreStatus>
-        <DivScore style={{ justifyContent: 'center' }}>
+        <DivScore>
           <ScoreLabel min={true}>SCORE:</ScoreLabel>
           <ScoreLabel>{score}</ScoreLabel>
         </DivScore>
-        <DivScore style={{ justifyContent: 'end' }}>
+        <DivScore>
           <ScoreLabel min={true}>PLAYER:</ScoreLabel>
           <ScoreLabel>{player.name}</ScoreLabel>
         </DivScore>
