@@ -1,15 +1,20 @@
 {
   "name": "whack-a-mole",
+  "description": "Whack a Mole - Gaming1",
+  "author": "gustavo.a.malta@gmail.com",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "project": "vite | npm run server",
+    "server": "cd server && npm run start | vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
+    "axios": "^1.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",

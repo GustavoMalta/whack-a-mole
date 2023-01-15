@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Player A", "score": 2 },
+  { "id": 2, "name": "Player B", "score": 1 },
+  { "id": 3, "name": "Player C", "score": 2 },
+  { "id": 4, "name": "Player D", "score": 0 },
+  { "id": 5, "name": "Player E", "score": 3 },
+  { "id": 6, "name": "Player F", "score": 6 }
+]

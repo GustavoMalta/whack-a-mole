@@ -6,9 +6,20 @@ export interface GameSliceState {
   starded: boolean;
   gridData: number;
   score: number;
+  status: GameStatesEnum;
+}
+export enum GameStatesEnum {
+  NOT_STARTED = 'NOT_STARTED',
+  STARTED = 'STARTED',
+  FINISHED = 'FINISHED',
 }
 
-const initialState = { name: '', moleUp: -1, starded: false } as GameSliceState;
+const initialState = {
+  name: '',
+  moleUp: -1,
+  starded: false,
+  status: GameStatesEnum.NOT_STARTED,
+} as GameSliceState;
 
 export const gameSlice = createSlice({
   name: 'game',
@@ -26,15 +37,18 @@ export const gameSlice = createSlice({
     },
     start: (state) => {
       state.starded = true;
+      state.status = GameStatesEnum.STARTED;
     },
     stop: (state) => {
       state.moleUp = -1;
       state.starded = false;
+      state.status = GameStatesEnum.FINISHED;
     },
     restart: (state) => {
       state.starded = false;
       state.moleUp = -1;
       state.score = 0;
+      state.status = GameStatesEnum.NOT_STARTED;
     },
   },
 });
@@ -66,3 +80,4 @@ export const { start, stop, setMoleUp, setMoleHit, restart } = gameSlice.actions
 export const getMoleUp = (state: { game: GameSliceState }) => state.game.moleUp;
 export const getScore = (state: { game: GameSliceState }) => state.game.score;
 export const getStarted = (state: { game: GameSliceState }) => state.game.starded;
+export const getStatus = (state: { game: GameSliceState }) => state.game.status;

@@ -13,13 +13,13 @@ export const Leaderboards = () => {
 
   const onLoad = () => {
     console.log(name);
-    dispatch(startGameAsync());
+    // dispatch(startGameAsync());
   };
 
   const score = useAppSelector(getScore);
 
   useEffect(() => {
-    onLoad();
+    // onLoad();
   }, []);
 
   return (

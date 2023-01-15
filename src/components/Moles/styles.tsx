@@ -21,4 +21,5 @@ export const MoleGrid = styled.div`
   display: flex;
   min-height: 150px;
   align-items: end;
+  z-index: 10;
 `;

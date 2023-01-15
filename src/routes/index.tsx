@@ -17,7 +17,7 @@ function Router() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game" element={name ? <Game /> : <Navigate to="/" />} />
-        <Route path="/leaderBoards" element={<Leaderboards />} />
+        <Route path="/leaderboards" element={<Leaderboards />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
