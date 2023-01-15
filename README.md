@@ -7,8 +7,9 @@ You will need:
 - [NodeJs 18.13 LTS](https://nodejs.org/en/)
 - [yarn](https://yarnpkg.com)
 
-You can change the server host by changhing the .env file, like demonstrated in .env.example
-The default url to Backend is 'http://localhost:3001'
+You can change the server host by changhing the .env file, like demonstrated in .env.example. \
+The default url to Backend is 'http://localhost:3001'\
+The default url to Frontend is 'http://localhost:3333'
 
 I left in the package.json a script to Start all the project more easly. After the Download the project, run one of this commands to download the peckages. This will downlaod the packages of the Front and Backend together:
 
@@ -31,5 +32,9 @@ After that you can run "server" to start the server, "dev" to start the FrontEnd
 - npm run project
 
 ---
+
+---
+
+![Alt text](Whack-a-Mole.png?raw=true 'Title')
 
 ---
