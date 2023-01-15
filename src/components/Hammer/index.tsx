@@ -12,15 +12,15 @@ export const Hammer = (props: HammerProps) => {
   const { posX, posY, smash } = props;
 
   return (
-    <div className="wam-hammer-container" key="wam-hammer">
+    <div key="hammer">
       <HammerImg
         src={wamHammer}
-        aria-label={'wam-hammer'}
+        aria-label={'hammer'}
         draggable={false}
         style={{
           top: posY,
           left: posX,
-          position: 'absolute',
+          position: 'fixed',
           zIndex: 50,
           pointerEvents: 'none',
           transformOrigin: 'bottom right',

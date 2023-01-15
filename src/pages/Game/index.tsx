@@ -10,7 +10,7 @@ import {
 } from './redux';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-import { Hammer, Moles } from '../../components';
+import { Moles } from '../../components';
 import scenarium from '../../assets/WAM_bg.jpg';
 import { Div, Map, ScoreLabel, ScoreStatus } from './styles';
 // import { Axios } from '../../api/axios';

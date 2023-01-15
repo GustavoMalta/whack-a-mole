@@ -35,10 +35,10 @@ function Moles(props: Props) {
     }
   };
 
-  const handleHammer = (event: { clientX: number; clientY: number }) => {
+  const handleHammer = (event: { pageX: number; pageY: number }) => {
     setPosition({
-      x: event.clientX - 250,
-      y: event.clientY - 370,
+      x: event.pageX - 60,
+      y: event.pageY - 125,
     });
   };
 
