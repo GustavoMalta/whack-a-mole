@@ -11,7 +11,6 @@ import { GameStatesEnum, getAuthorized, getStatus } from '../pages/Game/redux';
 
 function Router() {
   const isAuthorized = useAppSelector(getAuthorized);
-  console.log(isAuthorized);
   return (
     <BrowserRouter>
       <Background />

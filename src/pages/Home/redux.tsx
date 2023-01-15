@@ -20,7 +20,6 @@ export const playerSlice = createSlice({
 export const setPlayerName =
   (name: string) => async (dispatch: (arg0: { payload: undefined; type: string }) => void) => {
     try {
-      console.log(name);
       dispatch(savePlayer({ name, score: 0 }));
       dispatch(savePlayerName(name));
     } catch (err) {

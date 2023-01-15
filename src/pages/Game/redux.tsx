@@ -75,13 +75,11 @@ export const startGameAsync =
     const intervalId = setInterval(() => {
       const up = Math.floor(Math.random() * totalMoles);
       dispatch(setMoleUp(up));
-      console.log(up);
-    }, 800);
+    }, 777);
     setTimeout(() => {
-      console.log('finish');
       clearInterval(intervalId);
       dispatch(stop());
-    }, 10000); // 120000 toe minutes
+    }, 120000); // 120000 toe minutes
   };
 
 export const setNewPlayer = (player: Player) => async () => {

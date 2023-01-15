@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { InputStyled, Label } from './styles';
 
 export interface tipo {

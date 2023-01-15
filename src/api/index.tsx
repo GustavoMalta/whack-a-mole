@@ -28,15 +28,4 @@ export const setPlayerScore = async (player: Player) => {
     console.log('error', error);
     return error;
   }
-  //   const axios = Axios();
-
-  //   const { data } = await axios.get(`/api/v1/leaderboard`);
-  //   if (data.success) {
-  //     return data.records;
-  //   }
-  //   return new Error('cannot get leaderboard list');
-  // } catch (error) {
-  //   console.log('error', error);
-  //   return error;
-  // }
 };

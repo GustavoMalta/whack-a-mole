@@ -1,6 +1,3 @@
-import { ReactElement, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { getMoleUp } from '../../pages/Game/redux';
 import { Player } from '../../pages/Game/redux';
 import { Table } from './styles';
 // import './styles.css'

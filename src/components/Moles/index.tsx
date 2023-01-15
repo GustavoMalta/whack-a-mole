@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import hole from '../../assets/WAM_Hole.png';
 import mole from '../../assets/WAM_Mole.png';
 import { useAppDispatch, useAppSelector } from '../../hooks';

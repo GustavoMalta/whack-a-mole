@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 
 import { TableScore } from '../../components';
 import { Div, DivName, DivRank, DivScore, LeaderBorad, ScoreLabel, ScoreStatus } from './styles';
-import { getPlayer, getScore, unAthorize } from '../Game/redux';
+import { getPlayer, unAthorize } from '../Game/redux';
 
 export const Leaderboards = () => {
   const dispatch = useAppDispatch();
@@ -16,13 +16,6 @@ export const Leaderboards = () => {
     fillLeaderBoard();
     dispatch(unAthorize());
   }, []);
-
-  // useEffect(
-  //   function () {
-  //     bodyTable();
-  //   },
-  //   [leaderBoards],
-  // );
 
   async function fillLeaderBoard() {
     dispatch(getLeaderBoard());

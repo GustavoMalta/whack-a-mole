@@ -8,7 +8,6 @@ export interface Props {
 
 export const Background = (props: Props) => {
   const { img = WamBg } = props;
-  console.log(WamBg);
   return <Div bgImg={img}></Div>;
 };
 
