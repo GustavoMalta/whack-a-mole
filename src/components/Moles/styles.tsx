@@ -26,8 +26,8 @@ export const MolesGrid = styled.div`
 `;
 
 export const MoleGrid = styled.div`
-  width: 20%;
-  padding: 20px 60px;
+  width: 10%;
+  padding: 50px 70px;
   justify-content: center;
   display: flex;
   min-height: 150px;
