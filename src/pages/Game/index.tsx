@@ -10,10 +10,8 @@ import {
 } from './redux';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-import { Moles } from '../../components';
-import scenarium from '../../assets/WAM_bg.jpg';
+import { MolesGrid } from '../../components';
 import { Div, DivScore, Map, ScoreLabel, ScoreStatus } from './styles';
-// import { Axios } from '../../api/axios';
 import { useNavigate } from 'react-router-dom';
 
 export const Game = () => {
@@ -56,16 +54,15 @@ export const Game = () => {
     <Div>
       <ScoreStatus>
         <DivScore>
-          <ScoreLabel min={true}>SCORE:</ScoreLabel>
+          <ScoreLabel small >SCORE:</ScoreLabel>
           <ScoreLabel>{score}</ScoreLabel>
         </DivScore>
         <DivScore>
-          <ScoreLabel min={true}>PLAYER:</ScoreLabel>
+          <ScoreLabel small >PLAYER:</ScoreLabel>
           <ScoreLabel>{player.name}</ScoreLabel>
         </DivScore>
       </ScoreStatus>
-      <Moles />
-      {/* <Map src={scenarium} /> */}
+      <MolesGrid />
     </Div>
   );
 };

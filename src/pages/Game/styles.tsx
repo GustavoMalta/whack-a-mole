@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors } from '../../utils/colors';
 
 interface LabelProps {
-  min?: boolean;
+  small?: boolean;
 }
 export const Div = styled.div`
   max-width: 1300px;
@@ -31,12 +31,12 @@ export const ScoreStatus = styled.div`
 `;
 
 export const ScoreLabel = styled.label<LabelProps>`
-  font-size: ${({ min }) => (min ? 30 : 70)}px;
+  font-size: ${({ small }) => (small ? 30 : 70)}px;
   font-weight: 900;
-  color: ${({ min }) => (min ? colors.textSecondary : colors.primary)};
+  color: ${({ small }) => (small ? colors.textSecondary : colors.primary)};
 
-  ${({ min }) =>
-    min ? 'text-align: end; padding-right: 13px; display: flex; align-items: center;' : ''};
+  ${({ small }) =>
+    small ? 'text-align: end; padding-right: 13px; display: flex; align-items: center;' : ''};
 `;
 
 export const DivScore = styled.div`
