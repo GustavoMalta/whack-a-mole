@@ -1,3 +1,4 @@
+import { EventInputKeyDown, EventInputChange } from '../../Interfaces';
 import { InputStyled, Label } from './styles';
 
 export interface tipo {
@@ -11,11 +12,11 @@ export interface tipo {
 export const Input = (props: tipo) => {
   const { placeHolder = 'Type here', value, onChange, label, onPressEnter } = props;
 
-  const handleInput = (event: any) => {
-    onChange(event.value);
+  const handleInput = (event: EventInputChange) => {
+    onChange(event.target.value);
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: EventInputKeyDown) => {
     if (event.key === 'Enter') {
       onPressEnter();
     }
@@ -31,7 +32,7 @@ export const Input = (props: tipo) => {
       }}>
       <Label>{label + ':'}</Label>
       <InputStyled
-        onChange={(e) => handleInput(e.target)}
+        onChange={(e) => handleInput(e)}
         placeholder={placeHolder}
         onKeyDown={(e) => handleSubmit(e)}
         value={value}
