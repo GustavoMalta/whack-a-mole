@@ -1,41 +1,15 @@
 {
-  "name": "whack-a-mole",
-  "description": "Whack a Mole - Gaming1",
-  "author": "gustavo.a.malta@gmail.com",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "server",
+  "version": "1.0.0",
+  "description": "gamming server",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "project": "yarn server | yarn dev",
-    "server": "cd server && npm run start ",
-    "intallPackages": "yarn && cd server && yarn",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "gustavo.a.malta@gmail.com",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.1",
-    "axios": "^1.2.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5",
-    "react-router-dom": "^6.6.2",
-    "styled-components": "^5.3.6"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.9",
-    "@types/styled-components": "^5.1.26",
-    "@typescript-eslint/eslint-plugin": "^5.48.1",
-    "@typescript-eslint/parser": "^5.48.1",
-    "@vitejs/plugin-react": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-import": "^2.27.4",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.2",
-    "typescript": "^4.9.4",
-    "vite": "^4.0.0"
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
   }
 }
