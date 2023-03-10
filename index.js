@@ -59,7 +59,9 @@ app.post('/api/v1/players', function (req, res) {
   };
   return res.status(201).json(responseData);
 });
-
+app.get('/', (req, res) => {
+  res.status(200).json({ success: true });
+})
 app.get('/api/v1/leaderboard', (req, res) => {
   players.sort(sortPlayer);
   const responseData = {
